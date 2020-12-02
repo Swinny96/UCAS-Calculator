@@ -8,27 +8,29 @@ class Calculator extends Component {
         <List>
             <h3>Qualification</h3>
             <CoursesSelector>
+                <Courses>
+                    <Course>Please select a qualification..</Course>
                 {
 					data.Experiences.map((experience, i) => {
 						return (
-							<CourseList key={i}>
-								<Course>{experience.companyName}</Course>
-							</CourseList>
+								<Course key={i}>{experience.companyName}</Course>
 						);
 					})
 				}
+                </Courses>
             </CoursesSelector>
             <h3>Grade</h3>
             <GradeSelector>
+                <Grades>
+                    <Grade>Please select a grade..</Grade>
                 {
 					data.Experiences.map((experience, i) => {
 						return (
-							<Grades key={i}>
-								<Grade href={experience.logo}>{experience.logo}</Grade>
-							</Grades>
+								<Grade key={i}>{experience.url}</Grade>
 						);
 					})
 				}
+                </Grades>
             </GradeSelector>
         </List>
         );
@@ -38,7 +40,7 @@ export default Calculator;
 
 const List = styled.div``
 const CoursesSelector = styled.div``
-const CourseList = styled.select``
+const Courses = styled.select``
 const Course = styled.option``
 const GradeSelector = styled.div``
 const Grades = styled.select``
