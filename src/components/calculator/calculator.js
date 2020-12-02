@@ -38,8 +38,8 @@ export default Calculator;
 
 const List = styled.div``
 const CoursesSelector = styled.div``
-const CourseList = styled.div``
-const Course = styled.span``
+const CourseList = styled.select``
+const Course = styled.option``
 const GradeSelector = styled.div``
-const Grades = styled.div``
-const Grade = styled.a``
+const Grades = styled.select``
+const Grade = styled.option``
