@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import styled from 'styled-components'
 import Calculator from './components/calculator/calculator';
+import Api from './components/calculator/api';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       </Header>
       <Main>
         <Calculator />
+        <Api />
       </Main>
     </PageContainer>
   );
