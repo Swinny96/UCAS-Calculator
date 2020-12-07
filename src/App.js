@@ -3,6 +3,8 @@ import './App.css';
 import styled from 'styled-components'
 import Calculator from './components/calculator/calculator';
 import Api from './components/calculator/api';
+import Calc from './components/calculator/ucas-api';
+import Splice from './components/splicing';
 
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
       <Main>
         <Calculator />
         <Api />
+        <Splice />
       </Main>
     </PageContainer>
   );
