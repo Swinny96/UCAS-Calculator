@@ -5,6 +5,7 @@ import Calculator from './components/calculator/calculator';
 import Api from './components/calculator/api';
 import Calc from './components/calculator/ucas-api';
 import Splice from './components/splicing';
+import Splicing from './components/test2';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Calculator />
         <Api />
         <Splice />
+        <Splicing />
       </Main>
     </PageContainer>
   );
