@@ -9,7 +9,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 
 class Splice extends Component {
   state = {
-    countries: [
+    courses: [
       "A level",
       "Pearson BTEC Level 3 National Extended Diploma (first teaching from September 2016)",
       "Pearson BTEC Level 3 National Diploma (first teaching from September 2016)",
@@ -17,21 +17,21 @@ class Splice extends Component {
   };
 
   addcourse() {
-    this.setState({ countries: [...this.state.countries, ""] });
+    this.setState({ courses: [...this.state.courses, ""] });
   }
 
   handleChange(e, index) {
-    this.state.countries[index] = e.target.value;
+    this.state.courses[index] = e.target.value;
 
-    this.setState({ countries: this.state.countries });
+    this.setState({ courses: this.state.courses });
   }
 
   handleRemove(index) {
-    this.state.countries.splice(index, 1);
+    this.state.courses.splice(index, 1);
 
-    console.log(this.state.countries, "$$$$");
+    console.log(this.state.courses, "$$$$");
 
-    this.setState({ countries: this.state.countries });
+    this.setState({ courses: this.state.courses });
   }
 
   handleSubmit(e) {
@@ -43,7 +43,7 @@ class Splice extends Component {
       <div className="Splice">
         <h1>Course Add</h1>
         <label>Courses</label>
-        {this.state.countries.map((course, index) => {
+        {this.state.courses.map((course, index) => {
           return (
             <div key={index}>
               <Select>
