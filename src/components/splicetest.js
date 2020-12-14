@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import data from "../components/calculator/data"; 
 import styled from 'styled-components';
 
-class Splicer extends Component {
+function App() {
 
     state = {
         courses:[]
