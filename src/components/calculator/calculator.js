@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import data from "./data"; 
+import data from "./ucas.json"; 
 import styled from 'styled-components';
 
 class Calculator extends Component {
@@ -13,9 +13,9 @@ class Calculator extends Component {
                     <Courses>
                         <Course>Please select a qualification..</Course>
                         {
-                            data.Experiences.map((experience, i) => {
+                            data.Courses.map((experience, i) => {
                                 return (
-                                        <Course key={i}>{experience.companyName}</Course>
+                                        <Course key={i}>{experience}</Course>
                                 );
                             })
                         }
