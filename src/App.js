@@ -6,6 +6,8 @@ import Api from "./components/calculator/api";
 import Splice from "./components/splicing";
 import Splicing from "./components/test2";
 import Fields from "./components/Fields";
+import UCAS from "./components/calculator/api-ucas";
+import SimpleSelect from "./components/material";
 
 function App() {
 
@@ -16,10 +18,10 @@ function App() {
       </Header>
       <Main>
         <Fields />
-        <Calculator />
+        <UCAS />
         <Api />
-        <Splice />
-        <Splicing />
+        <Calculator/>
+        <SimpleSelect />
       </Main>
     </PageContainer>
   );
