@@ -15,12 +15,10 @@ function App() {
     <PageContainer>
       <Header>
         <Logo src={logo} alt="logo" />
+        <h1>Calculator</h1>
       </Header>
       <Main>
         <Fields />
-        <UCAS />
-        <Api />
-        <Calculator/>
       </Main>
     </PageContainer>
   );
@@ -30,10 +28,13 @@ export default App;
 
 const PageContainer = styled.div``;
 
-const Header = styled.header``;
+const Header = styled.header`
+  display: inline-flex;
+`;
 
 const Logo = styled.img`
   height: 45px;
+  margin-right: 25px;
 `;
 
 const Main = styled.main``;
