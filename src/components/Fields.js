@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import Container from "@material-ui/core/Container";
-import TextField from "@material-ui/core/TextField";
+
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
@@ -13,17 +13,6 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    "& .MuiTextField-root": {
-      margin: theme.spacing(1),
-    },
-  },
-  button: {
-    margin: theme.spacing(1),
-  },
-}));
 
 function Fields() {
   const handleChangeInput = (index, event) => {
@@ -48,7 +37,6 @@ function Fields() {
   };
 
   const [inputFields, setInputFields] = useState([
-    { firstName: "", lastName: "" },
     { firstName: "", lastName: "" },
   ]);
 
