@@ -21,7 +21,6 @@ function App() {
         <UCAS />
         <Api />
         <Calculator/>
-        <SimpleSelect />
       </Main>
     </PageContainer>
   );
