@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import Container from "@material-ui/core/Container";
+import data from "./calculator/ucas.json";
+import styled from "styled-components";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -16,34 +18,35 @@ import Select from "@material-ui/core/Select";
 
 function Fields() {
   const handleChangeInput = (index, event) => {
-    const values = [...inputFields];
+    const values = [...selectFields];
     values[index][event.target.name] = event.target.value;
-    setInputFields(values);
+    setselectFields(values);
+    setCourse(event.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefualt();
-    console.log("InputFields", inputFields);
+    console.log("selectFields", selectFields);
   };
 
   const handleAddFields = () => {
-    setInputFields([...inputFields, { firstName: "", lastName: "" }]);
+    setselectFields([...selectFields, { }]);
   };
 
   const handleRemoveFields = (index) => {
-    const values = [...inputFields];
+    const values = [...selectFields];
     values.splice(index, 1);
-    setInputFields(values);
+    setselectFields(values);
   };
 
-  const [inputFields, setInputFields] = useState([
+  const [selectFields, setselectFields] = useState([
     { firstName: "", lastName: "" },
   ]);
 
   const useStyles = makeStyles((theme) => ({
     formControl: {
       margin: theme.spacing(1),
-      minWidth: 120,
+      minWidth: 250,
     },
     selectEmpty: {
       marginTop: theme.spacing(2),
@@ -52,32 +55,29 @@ function Fields() {
 
   const classes = useStyles();
 
-  const [age, setAge] = React.useState("");
+  const [course, setCourse] = React.useState("");
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setCourse(event.target.value);
   };
 
   return (
     <Container>
-      <h1>Add new member</h1>
-      <form className={classes.root} onSubmit={handleSubmit}>
-        {inputFields.map((inputField, index) => (
-          <div key={index}>
+      <Heading>Qualification</Heading>
+      <UCASForm className={classes.root} onSubmit={handleSubmit}>
+        {selectFields.map((selectField, index) => (
+          <FormContainer key={index}>
             <FormControl variant="filled" className={classes.formControl}>
-              <InputLabel id="demo-simple-select-filled-label">Age</InputLabel>
+              <InputLabel id="demo-simple-select-filled-label">Please select a qualification..</InputLabel>
               <Select
                 labelId="demo-simple-select-filled-label"
                 id="demo-simple-select-filled"
-                value={age}
+                value={course}
                 onChange={handleChange}
               >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                {data.Courses.map((experience, i) => {
+                  return <MenuItem key={i} value={experience}>{experience}</MenuItem>;
+                })}
               </Select>
             </FormControl>
             <IconButton onClick={() => handleRemoveFields(index)}>
@@ -86,7 +86,7 @@ function Fields() {
             <IconButton onClick={() => handleAddFields()}>
               <AddIcon />
             </IconButton>
-          </div>
+          </FormContainer>
         ))}
         <Button
           className={classes.button}
@@ -98,9 +98,13 @@ function Fields() {
         >
           Send
         </Button>
-      </form>
+      </UCASForm>
     </Container>
   );
 }
 
 export default Fields;
+
+const UCASForm = styled.form``
+const FormContainer = styled.div``
+const Heading = styled.h1``
