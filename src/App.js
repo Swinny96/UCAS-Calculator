@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import styled from "styled-components";
-import Calculator from "./components/calculator/calculator";
+import Calculator from "./components/calculator/calculator-test";
 import Api from "./components/calculator/api";
 import Splice from "./components/splicing";
 import Splicing from "./components/test2";
@@ -19,6 +19,7 @@ function App() {
       </Header>
       <Main>
         <Fields />
+        <Calculator />
       </Main>
     </PageContainer>
   );
