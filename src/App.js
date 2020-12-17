@@ -8,9 +8,9 @@ import Splicing from "./components/test2";
 import Fields from "./components/Fields";
 import UCAS from "./components/calculator/api-ucas";
 import SimpleSelect from "./components/material";
+import SelectCalc from "./components/calculator/select-calc";
 
 function App() {
-
   return (
     <PageContainer>
       <Header>
@@ -19,7 +19,7 @@ function App() {
       </Header>
       <Main>
         <Fields />
-        <Calculator />
+        <SelectCalc />
       </Main>
     </PageContainer>
   );
