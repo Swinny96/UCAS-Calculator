@@ -3,7 +3,19 @@
    [
     {
         "id": "670c6d53",
-        "course": "A level"
+        "course": "A level",
+        "grade1": "A*",
+        "grade1Value": "56",
+        "grade2": "A",
+        "grade2Value": "48",
+        "grade3": "B",
+        "grade3Value": "40",
+        "grade4": "C",
+        "grade4Value": "32",
+        "grade5": "D",
+        "grade5Value": "24",
+        "grade6": "E",
+        "grade6Value": "16"
     },
     {
         "id": "4b82301c",

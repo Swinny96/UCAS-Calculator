@@ -14,9 +14,26 @@ const newdata = data.map((data) => {
 
 const grades = data.map((data) => {
   return (
-    <option key={data.id} value={data.id}>
-      {data.course}
-    </option>
+    <>
+      <option key={data.grade1Value} value={data.grade1Value}>
+        {data.grade1}
+      </option>
+      <option key={data.grade2Value} value={data.grade2Value}>
+        {data.grade2}
+      </option>
+      <option key={data.grade3Value} value={data.grade3Value}>
+        {data.grade3}
+      </option>
+      <option key={data.grade4Value} value={data.grade4Value}>
+        {data.grade4}
+      </option>
+      <option key={data.grade5Value} value={data.grade5Value}>
+        {data.grade5}
+      </option>
+      <option key={data.grade6Value} value={data.grade6Value}>
+        {data.grade6}
+      </option>
+    </>
   );
 });
 
@@ -41,13 +58,13 @@ export default class MyTest extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <select> 
-        <option>Select a Course</option>
-        {newdata} 
+        <select>
+          <option>Select a Course</option>
+          {newdata}
         </select>
-        <select value={this.state.value} onChange={this.handleChange}> 
-            <option value="0">Please Select A Grade</option>
-            <option value="56">A*</option>
+        <select value={this.state.value} onChange={this.handleChange}>
+          <option value="0">Please Select a Grade</option>
+          {grades}
         </select>
         <Points>
           Your Points: <PointsTotal>{this.state.value}</PointsTotal>
