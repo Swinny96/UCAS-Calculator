@@ -9,6 +9,8 @@ import Fields from "./components/Fields";
 import UCAS from "./components/calculator/api-ucas";
 import SimpleSelect from "./components/material";
 import SelectCalc from "./components/calculator/select-calc";
+import Qual from "./components/calculator/qual";
+import MyTest from "./components/test/data";
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
       <Main>
         <Fields />
         <SelectCalc />
+        <MyTest />
       </Main>
     </PageContainer>
   );
