@@ -49,6 +49,7 @@ const newdata = data.map((data) => {
     );
 }; */
 
+
 export default class DynamicSelect extends Component {
   constructor(props) {
     super(props);

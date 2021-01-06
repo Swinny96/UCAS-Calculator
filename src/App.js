@@ -13,6 +13,7 @@ import Qual from "./components/calculator/qual";
 import MyTest from "./components/test/data";
 import Axios from "./components/test/axios-select";
 import DynamicSelect from "./components/test/dynamic-select-box";
+import DynamicInput from "./components/test/dynamic-input";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <br/>
         <Axios />
         <DynamicSelect />
+        <DynamicInput />
       </Main>
     </PageContainer>
   );
