@@ -11,6 +11,7 @@ import SimpleSelect from "./components/material";
 import SelectCalc from "./components/calculator/select-calc";
 import Qual from "./components/calculator/qual";
 import MyTest from "./components/test/data";
+import Axios from "./components/test/axios-select";
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
         <Fields />
         <SelectCalc />
         <MyTest />
+        <br/>
+        <Axios />
       </Main>
     </PageContainer>
   );

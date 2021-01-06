@@ -4,6 +4,9 @@ import styled from "styled-components";
 
 import data from "./data/data.json";
 
+function Fields() {
+}
+
 const newdata = data.map((data) => {
   return (
     <option key={data.id} value={data.id}>
