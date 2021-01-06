@@ -14,6 +14,7 @@ import MyTest from "./components/test/data";
 import Axios from "./components/test/axios-select";
 import DynamicSelect from "./components/test/dynamic-select-box";
 import DynamicInput from "./components/test/dynamic-input";
+import InputTest2 from "./components/test/dynamic-input2";
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
         <br/>
         <Axios />
         <DynamicSelect />
-        <DynamicInput />
+        <InputTest2 />
       </Main>
     </PageContainer>
   );
