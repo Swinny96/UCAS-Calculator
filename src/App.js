@@ -28,9 +28,8 @@ function App() {
         <SelectCalc />
         <MyTest />
         <br/>
-        <Axios />
+        <br/>
         <DynamicSelect />
-        <InputTest2 />
       </Main>
     </PageContainer>
   );
