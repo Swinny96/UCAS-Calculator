@@ -12,6 +12,7 @@ import SelectCalc from "./components/calculator/select-calc";
 import Qual from "./components/calculator/qual";
 import MyTest from "./components/test/data";
 import Axios from "./components/test/axios-select";
+import DynamicSelect from "./components/test/dynamic-select-box";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <MyTest />
         <br/>
         <Axios />
+        <DynamicSelect />
       </Main>
     </PageContainer>
   );
