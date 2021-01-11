@@ -15,6 +15,7 @@ import Axios from "./components/test/axios-select";
 import DynamicSelect from "./components/test/dynamic-select-box";
 import DynamicInput from "./components/test/dynamic-input";
 import InputTest2 from "./components/test/dynamic-input2";
+import DynamicTesting from "./components/test/dynamic-test";
 
 function App() {
   return (
@@ -27,9 +28,9 @@ function App() {
         <Fields />
         <SelectCalc />
         <MyTest />
-        <br/>
-        <br/>
-        <DynamicSelect />
+        <br />
+        <br />
+        <DynamicTesting />
       </Main>
     </PageContainer>
   );
