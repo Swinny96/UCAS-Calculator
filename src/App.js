@@ -25,9 +25,7 @@ function App() {
         <h1>Calculator</h1>
       </Header>
       <Main>
-        <Fields />
-        <SelectCalc />
-        <MyTest />
+        <DynamicSelect />
         <br />
         <br />
         <DynamicTesting />
