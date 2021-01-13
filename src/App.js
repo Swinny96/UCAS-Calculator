@@ -12,10 +12,17 @@ import SelectCalc from "./components/calculator/select-calc";
 import Qual from "./components/calculator/qual";
 import MyTest from "./components/test/data";
 import Axios from "./components/test/axios-select";
-import DynamicSelect from "./components/test/dynamic-select-box";
+import DynamicSelect from "./components/qualfications/dynamic-select-box";
 import DynamicInput from "./components/test/dynamic-input";
 import InputTest2 from "./components/test/dynamic-input2";
 import DynamicTesting from "./components/test/dynamic-test";
+import MyMulti from "./components/test/Multi-Select-Test";
+import Multi from "./components/test/multi";
+import DynamicForm from "./components/test/dynamic-form";
+import CalculatorTest from "./components/test/calculator";
+import LogIn from "./components/test/login-test";
+import Product from "./components/test/Product/Product";
+import MyBuilder from "./components/test/Builder/MyBuilder";
 
 function App() {
   return (
@@ -26,9 +33,6 @@ function App() {
       </Header>
       <Main>
         <DynamicSelect />
-        <br />
-        <br />
-        <DynamicTesting />
       </Main>
     </PageContainer>
   );
@@ -36,10 +40,13 @@ function App() {
 
 export default App;
 
-const PageContainer = styled.div``;
+const PageContainer = styled.div`
+  margin: 30px;
+`;
 
 const Header = styled.header`
   display: inline-flex;
+  margin-bottom: 20px;
 `;
 
 const Logo = styled.img`
