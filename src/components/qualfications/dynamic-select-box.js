@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import "./table.css"
 
 const lookup = {
   int: [
@@ -73,17 +72,11 @@ export default class UCASCalculator extends Component {
       document.getElementById("gradeSelect").value
     );
     myCourses.push(mycourse);
-    var cur = document.getElementById("courseSelect");
     var gradeField = document.getElementById("gradeSelect");
     var grade = gradeField.options[gradeField.selectedIndex].text;
-    var points = [
-      document.getElementById("ptId").value +
-        document.getElementById("gradeSelect").value,
-    ];
     var x = document.getElementById("ptId").innerHTML;
     var y = document.getElementById("gradeSelect").value;
     var z = Number(x) + Number(y);
-
 
     var table = document.getElementById("myTable");
 
@@ -120,19 +113,20 @@ export default class UCASCalculator extends Component {
             </option>
           ))}
         </Select>
-        <button onClick={this.addCourseButtonClicked}>Add</button>
+        <Add onClick={this.addCourseButtonClicked}>Add</Add>
 
-        <table id="myTable">
-          <tr>
-            <th>Course</th>
-            <th>Grade</th>
-            <th>UCAS Points</th>
-          </tr>
-          <tr></tr>
-        </table>
-        <hr />
-        <PointsText>Your UCAS Points Total:</PointsText>
-        <PointsTotal id="ptId">0</PointsTotal>
+        <PointsContainer>
+          <PointsTable id="myTable">
+            <PoinsRow>
+              <PoinsHead>Course</PoinsHead>
+              <PoinsHead>Grade</PoinsHead>
+              <PoinsHead>UCAS Points</PoinsHead>
+            </PoinsRow>
+          </PointsTable>
+          <hr />
+          <PointsText>UCAS Points Total: </PointsText>
+          <PointsTotal id="ptId">0</PointsTotal>
+        </PointsContainer>
       </Container>
     );
   }
@@ -141,59 +135,10 @@ export default class UCASCalculator extends Component {
 const Container = styled.div`
   max-width: 400px;
 `;
-const MyHeaderSection = styled.div`
-  display: grid;
-  text-align: center;
-`;
-const Heading = styled.h2`
-  font-size: 18px;
-  font-weight: 700;
-  margin: 8px;
-  text-align: left;
-`;
-const Qualfication = styled.div`
-  display: grid;
-  margin: 10px 0px;
-  text-align: center;
-`;
-const AddQualfication = styled.button`
-  background: #e00223;
-  border: 3px solid;
-  border-color: #f10427;
-  color: #fff;
-  border-radius: 40px;
-  padding: 6px 12px;
-  font-weight: bold;
-  transition: 0.8s;
-  font-size: 14px;
-
-  :hover {
-    box-shadow: 4px 4px #e00223;
-  }
-`;
-const RemoveQualfication = styled.button`
-  background: #e00223;
-  border: 3px solid;
-  border-color: #f10427;
-  color: #fff;
-  border-radius: 40px;
-  padding: 6px 12px;
-  font-weight: bold;
-  transition: 0.8s;
-  font-size: 14px;
-
-  :hover {
-    box-shadow: 4px 4px #e00223;
-  }
-`;
 const PointsText = styled.span`
   font-weight: 600;
 `;
 const PointsTotal = styled.strong``;
-const Qualification = styled.div`
-  margin-bottom: 10px;
-  display: grid;
-`;
 
 const Select = styled.select`
   background: #fff;
@@ -205,7 +150,33 @@ const Select = styled.select`
   font-weight: bold;
   transition: 0.6s;
   font-size: 14px;
-  margin: 8px 0px;
+  margin-right: 8px;
+
+  :hover {
+    box-shadow: 4px 4px #e00223;
+    margin-bottom: 4px;
+  }
+  :active {
+    box-shadow: 4px 4px #e00223;
+    margin-bottom: 4px;
+  }
+  :focus {
+    box-shadow: 4px 4px #e00223;
+    margin-bottom: 4px;
+  }
+`;
+
+const Add = styled.button`
+  background: #fff;
+  border: 3px solid;
+  border-color: #f10427;
+  color: #333;
+  border-radius: 40px;
+  padding: 6px 12px;
+  font-weight: bold;
+  transition: 0.6s;
+  font-size: 14px;
+  margin-right: 8px;
 
   :hover {
     box-shadow: 4px 4px #e00223;
@@ -221,7 +192,14 @@ const Select = styled.select`
   }
 `;
 const Option = styled.option``;
-const PointsContianer = styled.div`
+const PointsContainer = styled.div`
   margin: 8px;
   text-align: left;
 `;
+const PointsTable = styled.table`
+  width: 100%;
+  margin: 8px;
+  text-align: left;
+`;
+const PoinsRow = styled.tr``;
+const PoinsHead = styled.th``;
