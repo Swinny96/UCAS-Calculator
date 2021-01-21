@@ -1,36 +1,68 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { Component, useState, useReducer } from "react";
 import styled from "styled-components";
+
+const courses = [
+    {
+      course: "A Level",
+      grade: "A*",
+      gradeValue: 56,
+    },
+    {
+      course: "BTEC",
+      grade: "D*",
+      gradeValue: 56,
+    },
+  ];
 
 const lookup = {
   int: [
-    { grade: "1", value: "1" },
-    { grade: "2", value: "2" },
-    { grade: "3", value: "3" },
-    { grade: "4", value: "4" },
-    { grade: "5", value: "5" },
+    { id: "1", text: "1" },
+    { id: "2", text: "2" },
+    { id: "3", text: "3" },
+    { id: "4", text: "4" },
+    { id: "5", text: "5" },
   ],
   abc: [
-    { grade: "a", value: "a" },
-    { grade: "b", value: "b" },
-    { grade: "c", value: "c" },
-    { grade: "d", value: "d" },
-    { grade: "e", value: "e" },
+    { id: "a", text: "a" },
+    { id: "b", text: "b" },
+    { id: "c", text: "c" },
+    { id: "d", text: "d" },
+    { id: "e", text: "e" },
   ],
   ALevel: [
-    { grade: "56", value: "A*" },
-    { grade: "48", value: "A" },
-    { grade: "40", value: "B" },
-    { grade: "32", value: "C" },
-    { grade: "24", value: "D" },
-    { grade: "16", value: "E" },
+    { id: "56", text: "A*" },
+    { id: "48", text: "A" },
+    { id: "40", text: "B" },
+    { id: "32", text: "C" },
+    { id: "24", text: "D" },
+    { id: "16", text: "E" },
   ],
   BTEC: [
-    { grade: "56", value: "D*" },
-    { grade: "48", value: "D" },
-    { grade: "32", value: "M" },
-    { grade: "16", value: "P" },
+    { id: "56", text: "D*" },
+    { id: "48", text: "D" },
+    { id: "32", text: "M" },
+    { id: "16", text: "P" },
   ],
 };
+
+function cartReducer(state, action) {
+    switch (action.type) {
+      case "add":
+        return [...state, action.course];
+      case "remove":
+        const courseIndex = state.findIndex(
+          (item) => item.course === action.course.course
+        );
+        if (courseIndex < 0) {
+          return state;
+        }
+        const update = [...state];
+        update.splice(courseIndex, 1);
+        return update;
+      default:
+        return state;
+    }
+  }
 
 export default class Qualfications extends Component {
   constructor(props) {
@@ -40,7 +72,6 @@ export default class Qualfications extends Component {
       value: "",
       name: "",
       CourseData: [],
-      count: 0,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleAddCourse = this.handleAddCourse.bind(this);
@@ -49,10 +80,6 @@ export default class Qualfications extends Component {
     /*     this.handleCourseNameChange = this.handleCourseNameChange.bind(this); */
     // this.SelectHandler = this.SelectHandler.bind(this);
   }
-
-/*   componentDidMount() {
-    document.title = `You clicked ${this.state.value} times`;
-  } */
 
   handleAddCourse() {
     let array = this.state.CourseData;
@@ -101,13 +128,13 @@ export default class Qualfications extends Component {
         <Heading>Grades</Heading>
         <Select onChange={this.handleChange}>
           {options.map((i) => (
-            <Option key={i.grade} value={i.grade}>
-              {i.value}
+            <Option key={i.id} value={i.id}>
+              {i.text}
             </Option>
           ))}
         </Select>
         <PointsContianer>
-          <PointsText>UCAS Points:</PointsText>
+          <PointsText>UCAS Points:</PointsText>{" "}
           <PointsTotal>{UCASValue}</PointsTotal>
         </PointsContianer>
       </Qualification>
