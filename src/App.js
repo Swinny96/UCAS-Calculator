@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import styled from "styled-components";
 import UCASCalculator from "./components/qualfications/dynamic-select-box";
+import TableTest from "./components/qualfications/new";
 
 function App() {
   return (

@@ -1,37 +1,31 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-const lookup = {
+const Qualfications = {
   int: [
-    { id: "1", text: "1" },
-    { id: "2", text: "2" },
-    { id: "3", text: "3" },
-    { id: "4", text: "4" },
-    { id: "5", text: "5" },
-  ],
-  abc: [
-    { id: "a", text: "a" },
-    { id: "b", text: "b" },
-    { id: "c", text: "c" },
-    { id: "d", text: "d" },
-    { id: "e", text: "e" },
+    { points: 1, grade: "1" },
+    { points: 2, grade: "2" },
+    { points: 3, grade: "3" },
+    { points: 4, grade: "4" },
+    { points: 5, grade: "5" },
   ],
   ALevel: [
-    { id: 56, text: "A*" },
-    { id: 48, text: "A" },
-    { id: 40, text: "B" },
-    { id: 32, text: "C" },
-    { id: 24, text: "D" },
-    { id: 16, text: "E" },
+    { points: 56, grade: "A*" },
+    { points: 48, grade: "A" },
+    { points: 40, grade: "B" },
+    { points: 32, grade: "C" },
+    { points: 24, grade: "D" },
+    { points: 16, grade: "E" },
   ],
   BTEC: [
-    { id: 56, text: "D*" },
-    { id: 48, text: "D" },
-    { id: 32, text: "M" },
-    { id: 16, text: "P" },
+    { points: 56, grade: "D*" },
+    { points: 48, grade: "D" },
+    { points: 32, grade: "M" },
+    { points: 16, grade: "P" },
   ],
 };
-export default class TableTest extends Component {
+
+export default class UCASCalculator extends Component {
   state = {
     rows: [{}],
     dataValue: "int",
@@ -57,7 +51,6 @@ export default class TableTest extends Component {
     var y = document.getElementById("GradesSelection").value;
     var z = Number(x) + Number(y);
 
-    document.getElementById("PointsID").value = z;
     document.getElementById("PointsID").innerHTML = z;
     const item = {
       name: document.getElementById("CourseSelection").value,
@@ -69,57 +62,71 @@ export default class TableTest extends Component {
     });
   };
   handleRemoveRow = () => {
+    const rows = [...this.state.rows];
+    var y = rows[rows.length - 1].points;
+    var x = document.getElementById("PointsID").innerHTML;
+    var z = Number(x) - Number(y);
+
+    document.getElementById("PointsID").innerHTML = z;
     this.setState({
       rows: this.state.rows.slice(0, -1),
     });
   };
   handleRemoveSpecificRow = (idx) => () => {
     const rows = [...this.state.rows];
+    var y = rows[idx].points;
     rows.splice(idx, 1);
     this.setState({ rows });
+    var x = document.getElementById("PointsID").innerHTML;
+
+    var z = Number(x) - Number(y);
+    document.getElementById("PointsID").innerHTML = z;
   };
   onChange = ({ target: { value } }) => {
     this.setState({ dataValue: value });
   };
-  handleChange(event) {
+  handleChange() {
     this.setState({ pointsValue: this.state.CourseData.length });
   }
   addCourse() {}
   render() {
     const { dataValue } = this.state;
-    const options = lookup[dataValue];
+    const options = Qualfications[dataValue];
 
     return (
       <Container>
-        <Select id="CourseSelection" onChange={this.onChange}>
-          <Option value="abc">Please Select a Qualfication</Option>
-          <Option value="ALevel">A Level</Option>
-          <Option value="BTEC">BTEC</Option>
-        </Select>
-        <Select id="GradesSelection" onChange={this.handleChange}>
-          <option value="0">Select Grade</option>
-          {options.map((i) => (
-            <option key={i.id} value={i.id} id={i.text}>
-              {i.text}
-            </option>
-          ))}
-        </Select>
-        <AddQualfication onClick={this.handleAddRow}>Add Row</AddQualfication>
-
+        <QualficationContainer>
+          <Select id="CourseSelection" onChange={this.onChange}>
+            <Option value="int">Please Select a Qualfication</Option>
+            <Option value="ALevel">A Level</Option>
+            <Option value="BTEC">BTEC</Option>
+          </Select>
+          <Select id="GradesSelection" onChange={this.handleChange}>
+            <Option value="0">Select Grade</Option>
+            {options.map((i) => (
+              <Option key={i.points} value={i.points} id={i.grade}>
+                {i.grade}
+              </Option>
+            ))}
+          </Select>
+          <AddQualfication onClick={this.handleAddRow}>
+            Add Qualfication
+          </AddQualfication>
+        </QualficationContainer>
         <hr />
         <PointsTable>
-          <PoinsHeader>
-            <PoinsRow>
-              <PoinsHead> # </PoinsHead>
-              <PoinsHead> Course </PoinsHead>
-              <PoinsHead> Grade </PoinsHead>
-              <PoinsHead> UCAS Points </PoinsHead>
-              <PoinsHead />
-            </PoinsRow>
-          </PoinsHeader>
-          <PoinsBody>
+          <PointsHeader>
+            <PointsRow>
+              <PointsHead>#</PointsHead>
+              <PointsHead>Course</PointsHead>
+              <PointsHead>Grade</PointsHead>
+              <PointsHead>UCAS Points</PointsHead>
+              <PointsHead />
+            </PointsRow>
+          </PointsHeader>
+          <PointsBody>
             {this.state.rows.map((item, idx) => (
-              <PointsRow id="addr0" key={idx}>
+              <QualficationRow key={idx}>
                 <PointsDetails>{idx}</PointsDetails>
                 <PointsDetails name="name">
                   {this.state.rows[idx].name}
@@ -134,17 +141,17 @@ export default class TableTest extends Component {
                   <DeleteQualfication
                     onClick={this.handleRemoveSpecificRow(idx)}
                   >
-                    Remove
+                    Remove Qualfication
                   </DeleteQualfication>
                 </PointsDetails>
-              </PointsRow>
+              </QualficationRow>
             ))}
-          </PoinsBody>
+          </PointsBody>
         </PointsTable>
 
-        <DeleteQualfication onClick={this.handleRemoveRow}>
-          Delete Last Row
-        </DeleteQualfication>
+        <DeleteLastQualfication onClick={this.handleRemoveRow}>
+          Delete Last Qualfication
+        </DeleteLastQualfication>
         <hr />
         <PointsText>Your UCAS Points Total: </PointsText>
         <PointsTotal id="PointsID">0</PointsTotal>
@@ -156,65 +163,16 @@ export default class TableTest extends Component {
 const Container = styled.div`
   max-width: 800px;
 `;
-const PointsText = styled.span`
-  font-weight: 600;
-`;
-const PointsTotal = styled.strong``;
 
-const Select = styled.select`
-  background: #fff;
-  border: 3px solid;
-  border-color: #f10427;
-  color: #333;
-  border-radius: 40px;
-  padding: 6px 12px;
-  font-weight: bold;
-  transition: 0.6s;
-  font-size: 14px;
-  margin-right: 8px;
-
-  :hover {
-    box-shadow: 4px 4px #e00223;
-    margin-bottom: 4px;
-  }
-  :active {
-    box-shadow: 4px 4px #e00223;
-    margin-bottom: 4px;
-  }
-  :focus {
-    box-shadow: 4px 4px #e00223;
-    margin-bottom: 4px;
-  }
-`;
-
-const Add = styled.button`
-  background: #fff;
-  border: 3px solid;
-  border-color: #f10427;
-  color: #333;
-  border-radius: 40px;
-  padding: 6px 12px;
-  font-weight: bold;
-  transition: 0.6s;
-  font-size: 14px;
-  margin-right: 8px;
-
-  :hover {
-    box-shadow: 4px 4px #e00223;
-    margin-bottom: 4px;
-  }
-  :active {
-    box-shadow: 4px 4px #e00223;
-    margin-bottom: 4px;
-  }
-  :focus {
-    box-shadow: 4px 4px #e00223;
-    margin-bottom: 4px;
-  }
+const QualficationContainer = styled.div`
+  display: grid;
+  grid-template-columns: auto auto auto;
+  width: 100%;
 `;
 
 const AddQualfication = styled.button`
   background: #e00223;
+  height: 40px;
   border: 3px solid;
   border-color: #f10427;
   color: #fff;
@@ -229,6 +187,8 @@ const AddQualfication = styled.button`
   }
 `;
 const DeleteQualfication = styled.button`
+  width: 100%;
+  height: 40px;
   background: #e00223;
   border: 3px solid;
   border-color: #f10427;
@@ -243,24 +203,70 @@ const DeleteQualfication = styled.button`
     box-shadow: 4px 4px #e00223;
   }
 `;
+const DeleteLastQualfication = styled.button`
+  width: 100%;
+  height: 40px;
+  margin-top: 8px;
+  background: #e00223;
+  border: 3px solid;
+  border-color: #f10427;
+  color: #fff;
+  border-radius: 40px;
+  padding: 6px 12px;
+  font-weight: bold;
+  transition: 0.8s;
+  font-size: 14px;
 
-const PointsRow = styled.tr`
-  :nth-child(1) {
-    display: none;
+  :hover {
+    box-shadow: 4px 4px #e00223;
+  }
+`;
+const PointsText = styled.span`
+  font-weight: 600;
+`;
+const PointsTotal = styled.strong``;
+
+const Select = styled.select`
+  background: #fff;
+  height: 40px;
+  border: 3px solid;
+  border-color: #f10427;
+  color: #333;
+  border-radius: 40px;
+  padding: 6px 12px;
+  font-weight: bold;
+  transition: 0.6s;
+  font-size: 14px;
+  margin-right: 8px;
+
+  :hover {
+    box-shadow: 4px 4px #e00223;
+    margin-bottom: 4px;
+  }
+  :active {
+    box-shadow: 4px 4px #e00223;
+    margin-bottom: 4px;
+  }
+  :focus {
+    box-shadow: 4px 4px #e00223;
+    margin-bottom: 4px;
   }
 `;
 const Option = styled.option``;
-const PointsContainer = styled.div`
-  margin: 8px;
-  text-align: left;
-`;
 const PointsTable = styled.table`
   width: 100%;
   margin: 8px;
   text-align: left;
 `;
-const PoinsRow = styled.tr``;
-const PoinsHeader = styled.thead``;
-const PoinsHead = styled.th``;
-const PoinsBody = styled.tbody``;
+const PointsRow = styled.tr``;
+const QualficationRow = styled.tr`
+  :nth-child(1) {
+    display: none;
+  }
+`;
+const PointsHeader = styled.thead``;
+const PointsHead = styled.th``;
+const PointsBody = styled.tbody`
+  width: 100%;
+`;
 const PointsDetails = styled.td``;
