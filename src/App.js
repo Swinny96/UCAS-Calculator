@@ -3,6 +3,9 @@ import "./App.css";
 import styled from "styled-components";
 import UCASCalculator from "./components/qualfications/dynamic-select-box";
 import TableTest from "./components/qualfications/new";
+import Api from "./components/calculator/api";
+import Posts from "./components/calculator/api";
+import Practice2 from "./components/calculator/api";
 
 function App() {
   return (
@@ -13,6 +16,7 @@ function App() {
       </MyHeader>
       <Main>
         <UCASCalculator />
+        <Practice2 />
       </Main>
     </PageContainer>
   );

@@ -97,22 +97,22 @@ export default class UCASCalculator extends Component {
       <Container>
         <QualficationContainer>
           <Select id="CourseSelection" onChange={this.onChange}>
-            <Option value="int">Please Select a Qualfication</Option>
+            <Option value="int">Select a Qualfication</Option>
             <Option value="ALevel">A Level</Option>
             <Option value="BTEC">BTEC</Option>
           </Select>
           <Select id="GradesSelection" onChange={this.handleChange}>
-            <Option value="0">Select Grade</Option>
+            <Option value="0">Select a Grade</Option>
             {options.map((i) => (
               <Option key={i.points} value={i.points} id={i.grade}>
                 {i.grade}
               </Option>
             ))}
           </Select>
-          <AddQualfication onClick={this.handleAddRow}>
-            Add Qualfication
-          </AddQualfication>
-        </QualficationContainer>
+        </QualficationContainer>{" "}
+        <AddQualfication onClick={this.handleAddRow}>
+          Add Qualfication
+        </AddQualfication>
         <hr />
         <PointsTable>
           <PointsHeader>
@@ -141,14 +141,13 @@ export default class UCASCalculator extends Component {
                   <DeleteQualfication
                     onClick={this.handleRemoveSpecificRow(idx)}
                   >
-                    Remove Qualfication
+                    Remove
                   </DeleteQualfication>
                 </PointsDetails>
               </QualficationRow>
             ))}
           </PointsBody>
         </PointsTable>
-
         <DeleteLastQualfication onClick={this.handleRemoveRow}>
           Delete Last Qualfication
         </DeleteLastQualfication>
@@ -166,13 +165,14 @@ const Container = styled.div`
 
 const QualficationContainer = styled.div`
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto;
   width: 100%;
 `;
 
 const AddQualfication = styled.button`
   background: #e00223;
   height: 40px;
+  width: 100%;
   border: 3px solid;
   border-color: #f10427;
   color: #fff;
@@ -181,6 +181,7 @@ const AddQualfication = styled.button`
   font-weight: bold;
   transition: 0.8s;
   font-size: 14px;
+  margin: 8px 0px;
 
   :hover {
     box-shadow: 4px 4px #e00223;
@@ -260,13 +261,23 @@ const PointsTable = styled.table`
 `;
 const PointsRow = styled.tr``;
 const QualficationRow = styled.tr`
+  border-radius: 40px;
+  padding: 6px 12px;
+  font-weight: bold;
   :nth-child(1) {
     display: none;
   }
 `;
 const PointsHeader = styled.thead``;
-const PointsHead = styled.th``;
+const PointsHead = styled.th`
+  text-align: center;
+`;
 const PointsBody = styled.tbody`
   width: 100%;
+  tr {
+    border: 3px solid #f10427;
+  }
 `;
-const PointsDetails = styled.td``;
+const PointsDetails = styled.td`
+  text-align: center;
+`;
