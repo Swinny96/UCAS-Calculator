@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-class Api extends Component {
+class Courses extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -41,6 +41,14 @@ class Api extends Component {
             </option>
           ))}
           </select>
+          <select id="gradeSelect" onChange={this.handleChange}>
+            <option value="0">Select Grade</option>
+          {this.state.courselist.map((i) => (
+            <option  key={i[0]} value={i[0]} id={i[1]}>
+              {i[1]}
+            </option>
+          ))}
+          </select>
           <p>Courses Listed: {this.state.courselist.length}</p>
            <table>
              <tr>
@@ -64,4 +72,4 @@ class Api extends Component {
     );
   }
 }
-export default Api;
+export default Courses;

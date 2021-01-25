@@ -6,6 +6,8 @@ import TableTest from "./components/qualfications/new";
 import Api from "./components/calculator/api";
 import Posts from "./components/calculator/api";
 import Practice2 from "./components/calculator/api";
+import Courses from "./components/calculator/UCAS/UCAS-Courses";
+import Grades from "./components/calculator/UCAS/UCAS-Grades";
 
 function App() {
   return (
@@ -16,7 +18,8 @@ function App() {
       </MyHeader>
       <Main>
         <UCASCalculator />
-        <Practice2 />
+        {/* <Courses /> */}
+        <Grades />
       </Main>
     </PageContainer>
   );

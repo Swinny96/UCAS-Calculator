@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-class Api extends Component {
+class Grades extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            courselist:[{id:"",value:""}],
+            gradelist:[{id:"",value:""}],
             loading:false
         }
     };
  
 
   async componentDidMount() {
-    const url = "https://www.ucas.com/api/tariff/v1/list";
+    const url = "https://www.ucas.com/api/tariff/v1/view/670c6d53";
     const response = await fetch(url);
     const data = await response.json();
     const stringdata = JSON.stringify(data);
@@ -20,7 +20,7 @@ class Api extends Component {
     var result = [];
     for(var i in data)
     result.push([i, data [i]]);
-    this.setState({ courselist: result , loading: false });
+    this.setState({ gradelist: result , loading: false });
   }
   
   render() {
@@ -35,19 +35,27 @@ class Api extends Component {
         <div>
           <select id="gradeSelect" onChange={this.handleChange}>
             <option value="0">Select Qualfication</option>
-          {this.state.courselist.map((i) => (
+          {this.state.gradelist.map((i) => (
             <option  key={i[0]} value={i[0]} id={i[1]}>
               {i[1]}
             </option>
           ))}
           </select>
-          <p>Courses Listed: {this.state.courselist.length}</p>
+          <select id="gradeSelect" onChange={this.handleChange}>
+            <option value="0">Select Grade</option>
+          {this.state.gradelist.map((i) => (
+            <option  key={i[0]} value={i[0]} id={i[1]}>
+              {i[1]}
+            </option>
+          ))}
+          </select>
+          <p>Grades Listed: {this.state.gradelist.length}</p>
            <table>
              <tr>
-               <th align="left">Code</th>
-               <th align="left">Course Description</th>
+               <th align="left">Grade</th>
+               <th align="left">UCAS Points</th>
              </tr>
-             {this.state.courselist.map((item, idx) => (
+             {this.state.gradelist.map((item, idx) => (
                     <tr id="addr0" key={idx}>
                       <td name="id">
                       {item[0]}
@@ -57,11 +65,11 @@ class Api extends Component {
                       </td>
                       </tr>))}
            </table>
-            <p> {this.state.courselist[10]}</p>
+            <p> {this.state.gradelist[10]}</p>
 
                 
             </div>
     );
   }
 }
-export default Api;
+export default Grades;
