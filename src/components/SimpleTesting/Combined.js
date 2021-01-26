@@ -9,7 +9,6 @@ export default class Combined extends Component {
     super(props);
     this.state = {
       rows: [{}],
-      dataValue: "int",
       courseid: "",
       value: "",
       courselist: [],
@@ -22,7 +21,7 @@ export default class Combined extends Component {
   handleChange(event) {
     this.setState({ value: event.target.value });
   }
-  
+
   onChange = ({ target: { value }}) => {
       var inputval = value;
     this.setState({ dataValue: inputval});
