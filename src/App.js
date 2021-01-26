@@ -7,6 +7,7 @@ import SimpleSelect from "./components/SimpleTesting/SimpleSelect";
 import SimpleAPI from "./components/SimpleTesting/SimpleAPI";
 import Combined from "./components/SimpleTesting/Combined";
 import NewCalculator from "./components/calculator/UCAS/NewCalculator";
+import UCASCalculator from "./components/calculator/calculator";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
         <h1>Calculator</h1>
       </MyHeader>
       <Main>
-        <NewCalculator />
+        <UCASCalculator />
       </Main>
     </PageContainer>
   );

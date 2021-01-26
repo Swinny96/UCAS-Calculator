@@ -163,13 +163,15 @@ export default class NewCalculator extends Component {
 }
 
 const Container = styled.div`
-  max-width: 800px;
+  max-width: 600px;
+  width: 100%;
 `;
 
 const QualficationContainer = styled.div`
   display: grid;
   grid-template-columns: auto auto;
   width: 100%;
+  max-width: 800px;
 `;
 
 const AddQualfication = styled.button`
@@ -233,6 +235,7 @@ const PointsTotal = styled.strong``;
 const Select = styled.select`
   background: #fff;
   height: 40px;
+  max-width: 400px;
   border: 3px solid;
   border-color: #f10427;
   color: #333;
@@ -264,8 +267,6 @@ const PointsTable = styled.table`
 `;
 const PointsRow = styled.tr``;
 const QualficationRow = styled.tr`
-  border-radius: 40px;
-  padding: 6px 12px;
   font-weight: bold;
   :nth-child(1) {
     display: none;
@@ -277,9 +278,6 @@ const PointsHead = styled.th`
 `;
 const PointsBody = styled.tbody`
   width: 100%;
-  tr {
-    border: 3px solid #f10427;
-  }
 `;
 const PointsDetails = styled.td`
   text-align: center;
