@@ -20,14 +20,16 @@ export default class NewCalculator extends Component {
   }
   handleAddRow = () => {
     var gradeField = document.getElementById("GradesSelection");
+    var courseField = document.getElementById("CourseSelection");
     var mygrade = gradeField.options[gradeField.selectedIndex].text;
+    var mycourse = courseField.options[courseField.selectedIndex].text;
     var x = document.getElementById("PointsID").innerHTML;
     var y = document.getElementById("GradesSelection").value;
     var z = Number(x) + Number(y);
 
     document.getElementById("PointsID").innerHTML = z;
     const item = {
-      name: document.getElementById("CourseSelection").value,
+      name: mycourse,
       grade: mygrade,
       points: gradeField.value,
     };
