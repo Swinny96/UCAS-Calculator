@@ -1,67 +1,36 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React, { Component } from "react";
 
-class Api extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            courselist:[{id:"",value:""}],
-            loading:false
-        }
-    };
- 
-
-  async componentDidMount() {
-    const url = "https://www.ucas.com/api/tariff/v1/list";
-    const response = await fetch(url);
-    const data = await response.json();
-    const stringdata = JSON.stringify(data);
-    var splitdata = stringdata.split(',');
-    var result = [];
-    for(var i in data)
-    result.push([i, data [i]]);
-    this.setState({ courselist: result , loading: false });
+class PracticeAPI extends Component {
+  state = {
+    posts: [],
+  };
+  /* 
+    1. Add the method componentDidMount()
+    2. Call fetch("https://dev-react-explained-api.pantheonsite.io/wp-json/wp/v2/posts")
+    3. Then call .json() on the response
+    4. Take that and set it as the value of posts in state
+    5  Add a catch to log out any errors
+  */
+  componentDidMount() {
+    fetch("https://swintonsplapi.azurewebsites.net/teams")
+      .then((response) => response.json())
+      .then((posts) => {
+        this.setState({ posts });
+      })
+      .catch((error) => console.error(error));
   }
-  
   render() {
-    if (this.state.loading) {
-      return <div>loading...</div>;
-    }
-
-   
     return (
-       
-
-        <div>
-          <select id="gradeSelect" onChange={this.handleChange}>
-            <option value="0">Select Qualfication</option>
-          {this.state.courselist.map((i) => (
-            <option  key={i[0]} value={i[0]} id={i[1]}>
-              {i[1]}
-            </option>
+      <header>
+        <h1>Posts</h1>
+        <ul>
+          {this.state.posts.map((post) => (
+            <li key={post.id}>{post.id}</li>
           ))}
-          </select>
-          <p>Courses Listed: {this.state.courselist.length}</p>
-           <table>
-             <tr>
-               <th align="left">Code</th>
-               <th align="left">Course Description</th>
-             </tr>
-             {this.state.courselist.map((item, idx) => (
-                    <tr id="addr0" key={idx}>
-                      <td name="id">
-                      {item[0]}
-                      </td>
-                      <td name="textvalue">
-                        {item[1]}
-                      </td>
-                      </tr>))}
-           </table>
-            <p> {this.state.courselist[10]}</p>
-
-                
-            </div>
+        </ul>
+      </header>
     );
   }
 }
-export default Api;
+
+export default PracticeAPI;

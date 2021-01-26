@@ -1,13 +1,11 @@
 import logo from "./logo.svg";
 import "./App.css";
 import styled from "styled-components";
-import UCASCalculator from "./components/qualfications/dynamic-select-box";
-import TableTest from "./components/qualfications/new";
-import Api from "./components/calculator/api";
-import Posts from "./components/calculator/api";
-import Practice2 from "./components/calculator/api";
-import Courses from "./components/calculator/UCAS/UCAS-Courses";
-import Grades from "./components/calculator/UCAS/UCAS-Grades";
+import MyUCASCalculator from "./components/calculator/UCAS/UCAS-Calculator";
+import NewCalc from "./components/calculator/UCAS/NewCalc";
+import SimpleSelect from "./components/SimpleTesting/SimpleSelect";
+import SimpleAPI from "./components/SimpleTesting/SimpleAPI";
+import Combined from "./components/SimpleTesting/Combined";
 
 function App() {
   return (
@@ -17,9 +15,8 @@ function App() {
         <h1>Calculator</h1>
       </MyHeader>
       <Main>
-        <UCASCalculator />
-        {/* <Courses /> */}
-        <Grades />
+        <MyUCASCalculator />
+        <Combined />
       </Main>
     </PageContainer>
   );
